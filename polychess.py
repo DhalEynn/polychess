@@ -15,6 +15,13 @@ def finDuGame (board):
     else:
         return False
 
+def mouvementDemande ():
+    if (GameIsText):
+        mouv = input("Quel mouvement voulez vous faire : ")
+        possibleMoves = board.legal_moves
+        
+
+
 #set the board to its initial position
 #corresponding to: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
 board = chess.Board()
@@ -32,24 +39,24 @@ moves = board.legal_moves
 print(moves.count())
 
 #iterate over all the moves
-for move in moves: 
-    
+for move in moves:
+
     #display the move
     print(move)
-    
+
     #save the current position
     current_board = board
-    
+
     #do the move
     board.push(move)
-    
+
     #display the board
     print(board)
-    
+
     #number of black moves
     print("Black moves:" + str(board.legal_moves.count()))
-    
+
     #undo the move
     board.pop()
-    
+
     finDuGame(board)
