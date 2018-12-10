@@ -1,4 +1,4 @@
-#python-chess import
+##python-chess import
 #https://github.com/niklasf/python-chess
 import chess
 
@@ -15,12 +15,18 @@ def finDuGame (board):
     else:
         return False
 
+## Quel mouvement le joueur veut-il faire ?
+# Tant que le mouvement demandé par l'utilisateur n'est pas possible,
+# on redemande à l'utilisateur quel sera son mouvement.
+
 def mouvementDemande ():
-    if (GameIsText):
+    while ("Le mouvement est impossible ou non légal"):
         mouv = input("Quel mouvement voulez vous faire : ")
         possibleMoves = board.legal_moves
-        
-
+        if (mouv in possibleMoves):
+            return mouv
+        else:
+            print("Le mouvement est impossible ou non légal")
 
 #set the board to its initial position
 #corresponding to: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
