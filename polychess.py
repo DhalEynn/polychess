@@ -20,9 +20,11 @@ def finDuGame (board):
 # on redemande à l'utilisateur quel sera son mouvement.
 
 def mouvementDemande ():
+    print(board)
     while ("Le mouvement est impossible ou non légal"):
-        mouv = input("Quel mouvement voulez vous faire : ")
         possibleMoves = board.legal_moves
+        print(possibleMoves)
+        mouv = input("Quel mouvement voulez vous faire : ")
         if (mouv in possibleMoves):
             return mouv
         else:
@@ -66,3 +68,6 @@ for move in moves:
     board.pop()
 
     finDuGame(board)
+    
+    a = mouvementDemande ()
+    print ("a = ", a)
