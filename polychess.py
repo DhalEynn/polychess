@@ -2,6 +2,19 @@
 #https://github.com/niklasf/python-chess
 import chess
 
+def finDuGame (board):
+    #do we have a winner?
+    if (board.is_game_over() or board.is_stalemate() or board.is_insufficient_material()):
+        print("The game is over")
+        print(board.result())
+        return True
+    elif (board.is_fivefold_repetition() or board.is_seventyfive_moves()):
+        print("The game is over because 5 repetitions or 75 moves without capture")
+        print(board.result())
+        return True
+    else:
+        return False
+
 #set the board to its initial position
 #corresponding to: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
 board = chess.Board()
@@ -39,8 +52,4 @@ for move in moves:
     #undo the move
     board.pop()
     
-    #do we have a winner?
-    if (board.is_game_over()):
-        print("The game is over")
-        print(board.result())
-    
+    finDuGame(board)
