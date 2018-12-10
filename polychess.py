@@ -24,9 +24,11 @@ def mouvementDemande ():
     while ("Le mouvement est impossible ou non légal"):
         possibleMoves = board.legal_moves
         print(possibleMoves)
-        mouv = input("Quel mouvement voulez vous faire : ")
+        temp = input("Quel mouvement voulez vous faire : ")
+        print (temp, type(temp))
+        mouv = chess.Move.from_uci(temp)
         if (mouv in possibleMoves):
-            return mouv
+            return (temp, mouv)
         else:
             print("Le mouvement est impossible ou non légal")
 
@@ -35,7 +37,7 @@ def mouvementDemande ():
 board = chess.Board()
 
 #print the board on the console
-print(board)
+"""print(board)
 
 #SVG render for the board is possible in Jupyter Notebook
 #board
@@ -67,7 +69,15 @@ for move in moves:
     #undo the move
     board.pop()
 
-    finDuGame(board)
-    
-    a = mouvementDemande ()
-    print ("a = ", a)
+    finDuGame(board)""" 
+
+a = mouvementDemande ()
+print ("a : ", a)
+
+print(a[0])
+#save the current position
+current_board = board
+#do the move
+board.push(a[1])
+#display the board
+print(board)
