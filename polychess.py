@@ -15,22 +15,22 @@ def finDuGame (board):
     else:
         return False
 
-## Quel mouvement le joueur veut-il faire ?
-# Tant que le mouvement demandé par l'utilisateur n'est pas possible,
-# on redemande à l'utilisateur quel sera son mouvement.
+## What is the move wanted by the player ?
+# Until the move written by the player is impossible,
+# we ask another time what move he want to do.
 
 def mouvementDemande ():
     print(board)
-    while ("Le mouvement est impossible ou non légal"):
+    while ("The move isn't possible or isn't legal"):
         possibleMoves = board.legal_moves
-        print(possibleMoves)
-        temp = input("Quel mouvement voulez vous faire : ")
-        print (temp, type(temp))
+        #print(possibleMoves)
+        temp = input("What move do you want to do (do) : ")
+        #print (temp, type(temp))
         mouv = chess.Move.from_uci(temp)
         if (mouv in possibleMoves):
             return (temp, mouv)
         else:
-            print("Le mouvement est impossible ou non légal")
+            print("The move isn't possible or isn't legal")
 
 #set the board to its initial position
 #corresponding to: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
@@ -69,7 +69,7 @@ for move in moves:
     #undo the move
     board.pop()
 
-    finDuGame(board)""" 
+    finDuGame(board)"""
 
 a = mouvementDemande ()
 print ("a : ", a)
