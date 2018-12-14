@@ -1,4 +1,4 @@
-#python-chess import
+##python-chess import
 #https://github.com/niklasf/python-chess
 import chess
 
@@ -15,12 +15,29 @@ def finDuGame (board):
     else:
         return False
 
+## Quel mouvement le joueur veut-il faire ?
+# Tant que le mouvement demandé par l'utilisateur n'est pas possible,
+# on redemande à l'utilisateur quel sera son mouvement.
+
+def mouvementDemande ():
+    print(board)
+    while ("Le mouvement est impossible ou non légal"):
+        possibleMoves = board.legal_moves
+        print(possibleMoves)
+        temp = input("Quel mouvement voulez vous faire : ")
+        print (temp, type(temp))
+        mouv = chess.Move.from_uci(temp)
+        if (mouv in possibleMoves):
+            return (temp, mouv)
+        else:
+            print("Le mouvement est impossible ou non légal")
+
 #set the board to its initial position
 #corresponding to: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
 board = chess.Board()
 
 #print the board on the console
-print(board)
+"""print(board)
 
 #SVG render for the board is possible in Jupyter Notebook
 #board
@@ -32,24 +49,35 @@ moves = board.legal_moves
 print(moves.count())
 
 #iterate over all the moves
-for move in moves: 
-    
+for move in moves:
+
     #display the move
     print(move)
-    
+
     #save the current position
     current_board = board
-    
+
     #do the move
     board.push(move)
-    
+
     #display the board
     print(board)
-    
+
     #number of black moves
     print("Black moves:" + str(board.legal_moves.count()))
-    
+
     #undo the move
     board.pop()
-    
-    finDuGame(board)
+
+    finDuGame(board)""" 
+
+a = mouvementDemande ()
+print ("a : ", a)
+
+print(a[0])
+#save the current position
+current_board = board
+#do the move
+board.push(a[1])
+#display the board
+print(board)
