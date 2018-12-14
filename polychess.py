@@ -2,6 +2,9 @@
 #https://github.com/niklasf/python-chess
 import chess
 
+## Is the game ready to end ?
+# Search if an ending condition has been triggered.
+
 def finDuGame (board):
     #do we have a winner?
     if (board.is_game_over() or board.is_stalemate() or board.is_insufficient_material()):
