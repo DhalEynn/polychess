@@ -17,7 +17,7 @@ The required features for PolyChess are:
 
 ## Milestones for the project
 
-Milestone 1:
+Milestone 1: ahahah
 
 PolyChess is able to play against user or another engine through UCI, has an opening book and an AI
 
