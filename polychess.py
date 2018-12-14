@@ -35,6 +35,9 @@ def mouvementDemande ():
         else:
             print("The move isn't possible or isn't legal")
 
+def Main ():
+    pass
+
 #set the board to its initial position
 #corresponding to: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
 board = chess.Board()
@@ -76,7 +79,18 @@ for move in moves:
 
 a = mouvementDemande ()
 print ("a : ", a)
+print(a[0])
+#save the current position
+current_board = board
+#do the move
+board.push(a[1])
+#display the board
+print(board)
 
+print("\nPlayer 2 :")
+
+a = mouvementDemande ()
+print ("a : ", a)
 print(a[0])
 #save the current position
 current_board = board
