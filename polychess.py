@@ -22,28 +22,31 @@ def finDuGame (board):
 # Until the move written by the player is impossible,
 # we ask another time what move he want to do.
 
-def mouvementDemande ():
-    print(board)
+def mouvementDemande (board):
     while ("The move isn't possible or isn't legal"):
         possibleMoves = board.legal_moves
         #print(possibleMoves)
         temp = input("What move do you want to do (do) : ")
         #print (temp, type(temp))
+        if (temp == 'q'):
+            return ["q", 0]
         mouv = chess.Move.from_uci(temp)
         if (mouv in possibleMoves):
             return (temp, mouv)
         else:
             print("The move isn't possible or isn't legal")
 
-def Main ():
+def main ():
     #set the board to its initial position
     #corresponding to: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
     board = chess.Board()
-    while (finDuGame (board)):
-        movement = mouvementDemande()
-        current_board = board
-        board.push(a[1])
+    movement = [0, 0]
+    while (finDuGame(board) and movement[0] != 'q'):
+        print("")
         print(board)
+        movement = mouvementDemande(board)
+        if (movement[0] != "q"):
+            board.push(movement[1])
 
 
 #print the board on the console
@@ -92,7 +95,8 @@ for move in moves:
 """
 THE TESTS
 """
-
+main()
+"""
 #set the board to its initial position
 #corresponding to: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
 board = chess.Board()
@@ -119,3 +123,4 @@ current_board = board
 board.push(a[1])
 #display the board
 print(board)
+"""
