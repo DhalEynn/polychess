@@ -10,13 +10,13 @@ def finDuGame (board):
     if (board.is_game_over() or board.is_stalemate() or board.is_insufficient_material()):
         print("The game is over")
         print(board.result())
-        return True
+        return False
     elif (board.is_fivefold_repetition() or board.is_seventyfive_moves()):
         print("The game is over because 5 repetitions or 75 moves without capture")
         print(board.result())
-        return True
-    else:
         return False
+    else:
+        return True
 
 ## What is the move wanted by the player ?
 # Until the move written by the player is impossible,
@@ -36,11 +36,15 @@ def mouvementDemande ():
             print("The move isn't possible or isn't legal")
 
 def Main ():
-    pass
+    #set the board to its initial position
+    #corresponding to: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
+    board = chess.Board()
+    while (finDuGame (board)):
+        movement = mouvementDemande()
+        current_board = board
+        board.push(a[1])
+        print(board)
 
-#set the board to its initial position
-#corresponding to: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
-board = chess.Board()
 
 #print the board on the console
 """print(board)
@@ -76,6 +80,23 @@ for move in moves:
     board.pop()
 
     finDuGame(board)"""
+
+
+
+
+
+
+
+
+
+"""
+THE TESTS
+"""
+
+#set the board to its initial position
+#corresponding to: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
+board = chess.Board()
+
 
 a = mouvementDemande ()
 print ("a : ", a)
