@@ -49,6 +49,13 @@ def main ():
             board.push(movement[1])
 
 
+"""
+    Start Programm
+"""
+
+main()
+
+
 #print the board on the console
 """print(board)
 
@@ -84,18 +91,9 @@ for move in moves:
 
     finDuGame(board)"""
 
-
-
-
-
-
-
-
-
 """
 THE TESTS
 """
-main()
 """
 #set the board to its initial position
 #corresponding to: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
