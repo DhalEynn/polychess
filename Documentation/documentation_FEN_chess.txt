@@ -1,0 +1,5 @@
+git clone -b Part3-FullCreation https://github.com/illerayn/polychess
+https://fr.wikipedia.org/wiki/Notation_Forsyth-Edwards
+https://python-chess.readthedocs.io/en/latest/core.html#piece-types
+https://python-chess.readthedocs.io/en/latest/core.html#board
+https://python-chess.readthedocs.io/en/latest/core.html#chess.Board
