@@ -1,10 +1,10 @@
 # PolyChess
 
-PolyChess (named polychess as Git repository) is a Chess engine written in Python and used as practicals for a course on project management at the engineering school Polytech Annecy-Chambéry. 
+PolyChess (named polychess as Git repository) is a Chess engine written in Python and used as practicals for a course on project management at the engineering school Polytech Annecy-Chambéry.
 
 The aim of this repository is not to provide any complete Chess engine since students have to do it based on python-chess. As a consequence, persons interested in this project should check the different forks.
 
-The required features for PolyChess are: 
+The required features for PolyChess are:
 
 * PolyChess is able to play against a user, or to play against itself (through UCI and Winboard on Windows, or Arena on Mac)
 * The games played are stored in PGN format in a directory games, the PGN headers have to be filled
@@ -17,13 +17,13 @@ The required features for PolyChess are:
 
 ## Milestones for the project
 
-Milestone 1: ahahah
+Milestone 1:
 
 PolyChess is able to play against user or another engine through UCI, has an opening book and an AI
 
 Milestone 2:
 
-PolyChess plays on Lichess (and FICS) 
+PolyChess plays on Lichess (and FICS)
 
 Milestone 3:
 
@@ -46,5 +46,3 @@ Board representation and legal moves are no longer provided by python-chess but 
 * Transposition table
 * Zobrist key
 * Perft
-
-
