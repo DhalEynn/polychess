@@ -11,12 +11,15 @@ import chess
 def tourMax(board,profondeur):
     print("hello max")
     if (profondeur==0):
-        return 1
+        return [1,0]
     profondeur=profondeur-1
     u=-inf
-    listeCoupsPossible=board.legal_moves()
+    coup=None
+    listeCoupsPossible=board.legal_moves
     for l in listeCoupsPossible:
-        utiliteTour=tourMin(board.push(l),profondeur)[0]
+        copyOfBoard=board.root()
+        copyOfBoard.push(l)
+        utiliteTour=tourMin(copyOfBoard,profondeur)[0]
         if utiliteTour>u :
             coup=l
             u=utiliteTour
@@ -25,12 +28,15 @@ def tourMax(board,profondeur):
 def tourMin(board,profondeur):
     print("hello min")
     if (profondeur==0):
-        return 1
+        return [1,0]
+    profondeur-=1
+    coup=None
     u=-inf
-    listeCoupsPossible=board.legal_moves()
-    for i in range(len(listeCoupsPossible)):
-        l=listeCoupsPossible[i]
-        utiliteTour=tourMax(board.push(l),profondeur)[0]
+    listeCoupsPossible=board.legal_moves
+    for l in listeCoupsPossible:
+        copyOfBoard=board.root()
+        copyOfBoard.push(l)
+        utiliteTour=tourMax(copyOfBoard,profondeur)[0]
         if utiliteTour<u :
             coup=l
             u=utiliteTour
@@ -39,7 +45,20 @@ def tourMin(board,profondeur):
 
 def MinMax(board,profondeur):
     print("hello minMax")
-    return tourMax(board,profondeur)    
+    return tourMax(board, profondeur)   
+
+
+
+# parcours de liste 
+    #arret au premier espace
+    #si mini point au noir
+    #sinon contraire
+    #nombre de point en foction de la lettre 
+    # p=1 N=3 B3 R=3 Q=9 K=0
+    #somme des points des blanc et celui des noir 
+    #booléen en entrée pour noir (0) et blanc(1)
+    #si 1 blanc-noir sinon inverse
+    
 
     #============================================================================================================
     #       ALPHA-BETA PRUNING ALGORITHM
