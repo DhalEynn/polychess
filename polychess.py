@@ -35,9 +35,18 @@ def mouvementDemande (board):
             print("The move isn't possible or isn't legal")
 
 ## Main function for the program.
-# The backbone of the program.
+# The backbone of the program, with the gestion of the game.
+# Features loading/saving gestion, play modes and the game.
 
 def main ():
+
+    # Check how the player want to play :
+    # Player vs Computer or Computer vs Computer
+    PLAYER = False;
+    jeu = input ("Do you want to play against AI (1) or see an AI play against another AI (2) ?\n")
+    if (int(jeu) < 2):
+        PLAYER = True
+
     #set the board to its initial position
     #corresponding to: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
     board = chess.Board()
@@ -45,9 +54,16 @@ def main ():
     while (finDuGame(board) and movement[0] != 'q'):
         print("")
         print(board)
-        movement = mouvementDemande(board)
-        if (movement[0] != "q"):
-            board.push(movement[1])
+        print("SAVING GAME HERE")
+        if (PLAYER == True):
+            movement = mouvementDemande(board)
+            if (movement[0] != "q"):
+                board.push(movement[1])
+                print("")
+                print(board)
+                print("Play AI here")
+        else:
+            print("Play AI vs AI here")
 
 
 """
@@ -55,7 +71,7 @@ def main ():
 """
 
 main()
-print ("You have quit the game by force. See you next time !")
+print ("You have quitted the game by force. See you next time !")
 
 
 #print the board on the console
