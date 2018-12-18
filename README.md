@@ -1,4 +1,4 @@
-# PolyChess
+# PolyChess By Alpha0
 
 Trello link : https://trello.com/b/2kFbD5MU/notre-projet
 Discord server link (for supervision) : https://discord.gg/E3SM5VJ
@@ -49,3 +49,9 @@ Board representation and legal moves are no longer provided by python-chess but 
 * Transposition table
 * Zobrist key
 * Perft
+
+# Alpha0 team :
+* Robin COLLIAUX  - Chief
+* Rémy MARTIN     - Developer
+* Nadia HAMADOU   - Developer
+* Beda IGIRANEZA  - Developer
