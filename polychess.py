@@ -25,9 +25,7 @@ def finDuGame (board):
 def mouvementDemande (board):
     while ("The move isn't possible or isn't legal"):
         possibleMoves = board.legal_moves
-        #print(possibleMoves)
         temp = input("What move do you want to do (do) : ")
-        #print (temp, type(temp))
         if (temp == 'q'):
             return ["q", 0]
         mouv = chess.Move.from_uci(temp)
@@ -35,6 +33,9 @@ def mouvementDemande (board):
             return (temp, mouv)
         else:
             print("The move isn't possible or isn't legal")
+
+## Main function for the program.
+# The backbone of the program.
 
 def main ():
     #set the board to its initial position
@@ -54,6 +55,7 @@ def main ():
 """
 
 main()
+print ("You have quit the game by force. See you next time !")
 
 
 #print the board on the console
