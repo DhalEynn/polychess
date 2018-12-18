@@ -1,6 +1,7 @@
 # PolyChess By Alpha0
 
 Trello link : https://trello.com/b/2kFbD5MU/notre-projet
+
 Discord server link (for supervision) : https://discord.gg/E3SM5VJ
 
 PolyChess (named polychess as Git repository) is a Chess engine written in Python and used as practicals for a course on project management at the engineering school Polytech Annecy-Chambéry.
