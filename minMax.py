@@ -8,15 +8,23 @@ Created on Fri Dec 14 11:42:25 2018
 from numpy import inf
 import chess
 
-
+    #Methode tourMax
+    #return the best move for a given board,a depth and a variable
+    # the depth is to know how deep should it go i.e how far should we go on the establismnent of the legal moves
+    # and the variable is to know which player it have maximize the utility so True for the Whites and False for the Blacks
+    
 def tourMax(board,profondeur,boolean):
+    #when the depth eaquals 0 it's a leaf so return its utility
     if (profondeur==0):
         b=board.fen()
         return [utility(b,boolean),0]
+    # if not, we make sur to decrease the depth
     profondeur = profondeur-1
     u=-inf
     coup=None
+    #listeCoupsPossible is the list of all legal moves considering the board
     listeCoupsPossible=board.legal_moves
+    # 
     for l in listeCoupsPossible:
         copyOfBoard=board.copy()
         copyOfBoard.push(l)
@@ -28,7 +36,7 @@ def tourMax(board,profondeur,boolean):
 
 
 #==========================================================================================================
-
+#
 
 def tourMin(board,profondeur,boolean):
     if (profondeur==0):
@@ -49,6 +57,9 @@ def tourMin(board,profondeur,boolean):
 
 #==========================================================================================================
 
+    # method MinMax()
+    # determine the best move with the utility related by calling 
+    # the method tourMax()
 def MinMax(board,profondeur,boolean):
     return tourMax(board, profondeur,boolean)
 
