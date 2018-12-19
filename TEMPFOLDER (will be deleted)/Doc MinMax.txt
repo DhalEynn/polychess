@@ -1,0 +1,16 @@
+minimax or MinMax algorithm is defined as a rule to minimize the loss for a worst case scenario.
+So the goal of the minMax method is to find the best move to play from a given state(our board)
+and also the utility related to this move.
+We assume that it exists a tree that represents all the possible evolutions of the game for a
+given depth. And the we trace back to the root the best move.
+To achieve this the question is to know for the actual level which node will give the best move .
+This choice is define by the utility related to each node. knowing that the aim of each player is
+to maximize it gain, the highest utility is the one chosen. And so on till we reach the root.
+The utility is given by a method also named utility. To play its role, it consider which one of the 
+player it has to determine the utility. For that it does the difference between his sum of the points
+assigned  and his opponent's.
+So minMax return the best move given by tourMax. tourMax chose in all the legal 
+moves for a given state the one that has the highest utility considering that tourMin is in charge
+to do the same for the opponent.
+
+
