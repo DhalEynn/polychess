@@ -55,6 +55,9 @@ def main ():
         print("")
         print(board)
         print("SAVING GAME HERE")
+
+        # Player versus AI
+
         if (PLAYER == True):
             movement = mouvementDemande(board)
             if (movement[0] != "q"):
@@ -62,6 +65,9 @@ def main ():
                 print("")
                 print(board)
                 print("Play AI here")
+
+        # AI versus AI
+        
         else:
             print("Play AI vs AI here")
 
