@@ -12,14 +12,16 @@ import time
 # Search if an ending condition has been triggered.
 
 def finDuGame (board):
+    print("")
+    print(board)
     #do we have a winner?
     if (board.is_game_over() or board.is_stalemate() or board.is_insufficient_material()):
         print("The game is over")
-        #print(board.result())
-        #return False
+        print(board.result())
+        return False
     elif (board.is_fivefold_repetition() or board.is_seventyfive_moves()):
         print("The game is over because 5 repetitions or 75 moves without capture")
-        #print(board.result())
+        print(board.result())
         return False
     else:
         return True
@@ -29,7 +31,8 @@ def finDuGame (board):
 # we ask another time what move he want to do.
 
 def mouvementDemande (board):
-
+    print("")
+    print(board)
     while ("The move isn't possible or isn't legal"):
         possibleMoves = board.legal_moves
         temp = input("What move do you want to do (do) : ")
@@ -46,18 +49,19 @@ def mouvementDemande (board):
 # Features loading/saving gestion, play modes and the game.
 
 def main ():
-
+    print("CHECK OPENING GAME HERE")
     # Check how the player want to play :
     # Player vs Computer or Computer vs Computer
     PLAYER = False;
     jeu = input ("Do you want to play against AI (1) or see an AI play against another AI (2) ?\n")
     if (int(jeu) < 2):
         PLAYER = True
-
     #set the board to its initial position
     #corresponding to: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
     board = chess.Board()
+    #initialiser
     movement = [0, 0]
+    list_moves = []
     while (finDuGame(board) and movement[0] != 'q'):
         print("SAVING GAME HERE")
 
