@@ -36,7 +36,7 @@ def tourMin(board,profondeur,boolean):
         return [utility(b,boolean),0]
     profondeur=profondeur-1
     coup=None
-    u=-inf
+    u=inf
     listeCoupsPossible=board.legal_moves
     for l in listeCoupsPossible:
         copyOfBoard=board.copy()
