@@ -11,7 +11,7 @@ def finDuGame (board):
     #do we have a winner?
     if (board.is_game_over() or board.is_stalemate() or board.is_insufficient_material()):
         print("The game is over")
-       # print(board.result())
+        #print(board.result())
         #return False
     elif (board.is_fivefold_repetition() or board.is_seventyfive_moves()):
         print("The game is over because 5 repetitions or 75 moves without capture")
@@ -28,9 +28,7 @@ def mouvementDemande (board):
     
     while ("The move isn't possible or isn't legal"):
         possibleMoves = board.legal_moves
-        #print(possibleMoves)
         temp = input("What move do you want to do (do) : ")
-        #print (temp, type(temp))
         if (temp == 'q'):
             return ["q", 0]
         mouv = chess.Move.from_uci(temp)
@@ -39,27 +37,47 @@ def mouvementDemande (board):
         else:
             print("The move isn't possible or isn't legal")
 
+## Main function for the program.
+# The backbone of the program, with the gestion of the game.
+# Features loading/saving gestion, play modes and the game.
+
 def main ():
+
+    # Check how the player want to play :
+    # Player vs Computer or Computer vs Computer
+    PLAYER = False;
+    jeu = input ("Do you want to play against AI (1) or see an AI play against another AI (2) ?\n")
+    if (int(jeu) < 2):
+        PLAYER = True
+
     #set the board to its initial position
     #corresponding to: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
     board = chess.Board()
     movement = [0, 0]
-    print(board)
     while (finDuGame(board) and movement[0] != 'q'):
-        input()
-        print("")
-        #movement = mouvementDemande(board)
-        #if (movement[0] != "q"):
-            #board.push(movement[1])
-        coup = MinMax(board,3,True)[1]
-        board.push(coup)
-        print(board)
+        print("SAVING GAME HERE")
+
+        # Player versus AI
+
+        if (PLAYER == True):
+            movement = mouvementDemande(board)
+            if (movement[0] != "q"):
+                board.push(movement[1])
+                print("")
+                print(board)
+                print("Play AI here")
+
+        # AI versus AI
+        
+        else:
+            print("Play AI vs AI here")
 
 """
     Start Programm
 """
 
 main()
+print ("You have quitted the game by force. See you next time !")
 
 
 #print the board on the console

@@ -1,5 +1,20 @@
+
+a exemple of FEN "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
+lowercase: Black
+uppercase: White
+(pawn = "P", knight = "N", bishop = "B", rook = "R", queen = "Q" and king = "K")
+/: start of next line 
+number: number of void case in line 
+W or B: color of player
+KQkq: possibility of 
+
+
 git clone -b Part3-FullCreation https://github.com/illerayn/polychess
-https://fr.wikipedia.org/wiki/Notation_Forsyth-Edwards
+
+https://en.wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation
+
 https://python-chess.readthedocs.io/en/latest/core.html#piece-types
+
 https://python-chess.readthedocs.io/en/latest/core.html#board
+
 https://python-chess.readthedocs.io/en/latest/core.html#chess.Board
