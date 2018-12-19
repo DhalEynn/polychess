@@ -1,6 +1,8 @@
 ##python-chess import
 #https://github.com/niklasf/python-chess
 import chess
+from minMax import MinMax
+import time
 
 ## Is the game ready to end ?
 # Search if an ending condition has been triggered.
@@ -9,11 +11,11 @@ def finDuGame (board):
     #do we have a winner?
     if (board.is_game_over() or board.is_stalemate() or board.is_insufficient_material()):
         print("The game is over")
-        print(board.result())
-        return False
+        #print(board.result())
+        #return False
     elif (board.is_fivefold_repetition() or board.is_seventyfive_moves()):
         print("The game is over because 5 repetitions or 75 moves without capture")
-        print(board.result())
+        #print(board.result())
         return False
     else:
         return True
@@ -23,6 +25,7 @@ def finDuGame (board):
 # we ask another time what move he want to do.
 
 def mouvementDemande (board):
+    
     while ("The move isn't possible or isn't legal"):
         possibleMoves = board.legal_moves
         temp = input("What move do you want to do (do) : ")
@@ -52,8 +55,6 @@ def main ():
     board = chess.Board()
     movement = [0, 0]
     while (finDuGame(board) and movement[0] != 'q'):
-        print("")
-        print(board)
         print("SAVING GAME HERE")
 
         # Player versus AI
@@ -70,7 +71,6 @@ def main ():
         
         else:
             print("Play AI vs AI here")
-
 
 """
     Start Programm
