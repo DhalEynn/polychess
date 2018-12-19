@@ -1,3 +1,7 @@
+"""
+@author: Team Alpha0
+"""
+
 ##python-chess import
 #https://github.com/niklasf/python-chess
 import chess
@@ -25,7 +29,7 @@ def finDuGame (board):
 # we ask another time what move he want to do.
 
 def mouvementDemande (board):
-    
+
     while ("The move isn't possible or isn't legal"):
         possibleMoves = board.legal_moves
         temp = input("What move do you want to do (do) : ")
@@ -68,7 +72,7 @@ def main ():
                 print("Play AI here")
 
         # AI versus AI
-        
+
         else:
             print("Play AI vs AI here")
 
