@@ -29,10 +29,6 @@ Milestone 2:
 
 PolyChess plays on Lichess (and FICS)
 
-Milestone 3:
-
-Board representation and legal moves are no longer provided by python-chess but are students' responsibilities
-
 
 # Alpha0 team :
 * Robin COLLIAUX  - Chief
