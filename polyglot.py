@@ -1,4 +1,8 @@
-#python-chess import 
+"""
+@author: Team Alpha0
+"""
+
+#python-chess import
 #https://github.com/niklasf/python-chess
 import chess
 
