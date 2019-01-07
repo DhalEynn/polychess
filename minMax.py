@@ -7,7 +7,10 @@ Created on Fri Dec 14 11:42:25 2018
 
 from numpy import inf
 #===========================================================================================================
-
+    #method utility
+    #return the utility related to an action (the parameter liste)
+    #and take another parameter which is a boolean (True if the action is related to the whites and False for the blacks)
+    #the utility is the difference between the two sums (sum of the points related to each pawn of blacks or whites other wise)
 def utility(liste,boolean):
     sumNoir=0
     sumBlanc=0
@@ -38,7 +41,7 @@ def utility(liste,boolean):
     return sumNoir-sumBlanc
 
 #=================================================================================================================
-    #Methode tourMax
+    #Method tourMax
     #return the best move for a given board,a depth and a variable
     # the depth is to know how deep should it go i.e how far should we go on the establismnent of the legal moves
     # and the variable is to know which player it have maximize the utility so True for the Whites and False for the Blacks
@@ -66,7 +69,7 @@ def tourMax(board,profondeur,boolean):
 
 
 #==========================================================================================================
-#
+    #Works like TourMax
 
 def tourMin(board,profondeur,boolean):
     if (profondeur==0):
