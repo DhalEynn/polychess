@@ -7,19 +7,23 @@
 import chess
 from minMax import MinMax
 import time
+from os import listdir
+from os.path import isfile, join
 
 ## Is the game ready to end ?
 # Search if an ending condition has been triggered.
 
 def finDuGame (board):
-    print("")
-    print(board)
     #do we have a winner?
     if (board.is_game_over() or board.is_stalemate() or board.is_insufficient_material()):
+        print("")
+        print(board)
         print("The game is over")
         print(board.result())
         return False
     elif (board.is_fivefold_repetition() or board.is_seventyfive_moves()):
+        print("")
+        print(board)
         print("The game is over because 5 repetitions or 75 moves without capture")
         print(board.result())
         return False
@@ -50,25 +54,43 @@ def mouvementDemande (board):
 
 def main ():
     EXISTING = str(-1)
-    while (EXISTING != str(0) and EXISTING != str(1)):
-        EXISTING = str(input("Do you want to open an already saved game (1 - yes, 0 - no) ?"))
-    if (EXISTING == str(1)):
-        from os import listdir
-        from os.path import isfile, join
-        allFiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
-        print ("Here are all game saved : ")
-        for i in range (len(allFiles)):
-            print (i, "-", allFiles[i])
-        value = str(input("What file do you want to load"))
-        print ("Load allFiles[", i, "]")
-    else:
-        print ("New Game :")
-        # Check how the player want to play :
-        # Player vs Computer or Computer vs Computer
-        PLAYER = False;
-        jeu = input ("Do you want to play against AI (1) or see an AI play against another AI (2) ?\n")
-        if (int(jeu) < 2):
-            PLAYER = True
+    NOTRETOUR = True
+    while (NOTRETOUR):
+        allFiles = [f for f in listdir("./SAVES/") if (isfile(join("./SAVES/", f)) and f != ".DS_Store")]
+        if (len(allFiles) != 0):
+            print ("Here are all saved games : ")
+            for i in range (len(allFiles)):
+                print (i, "-", allFiles[i])
+            while (EXISTING != str(0) and EXISTING != str(1)):
+                EXISTING = str(input("Do you want to open an already saved game (1 - yes, 0 - no) ?"))
+        else:
+            EXISTING = str(0)
+        if (EXISTING == str(1)):
+            value = -1
+            print (len(allFiles), "- Retour")
+            while (value < 0 or value > len(allFiles)):
+                value = str(input("What file do you want to load"))
+                try:
+                    value = int(value)
+                except:
+                    print("Enter a valid number : between 0 and", len(allFiles))
+            if (value == len(allFiles)):
+                print ("Return to main menu")
+            else:
+                # ==========================================================================
+                print ("Load allFiles[", value, "]")
+                # ==========================================================================
+                NOTRETOUR = False
+        else:
+            print ("New Game :")
+            NOTRETOUR = False
+            # Check how the player want to play :
+            # Player vs Computer or Computer vs Computer
+            PLAYER = False;
+            jeu = input ("Do you want to play against AI (1) or see an AI play against another AI (2) ?\n")
+            if (int(jeu) < 2):
+                PLAYER = True
+            
     #set the board to its initial position
     #corresponding to: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
     board = chess.Board()
