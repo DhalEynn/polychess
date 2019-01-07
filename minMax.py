@@ -6,8 +6,38 @@ Created on Fri Dec 14 11:42:25 2018
 """
 
 from numpy import inf
-import chess
+#===========================================================================================================
 
+def utility(liste,boolean):
+    sumNoir=0
+    sumBlanc=0
+    i=0
+    while liste[i]!=' ':
+        if liste [i]=='p':
+            sumNoir+=1
+            i+=1
+        elif liste[i]=='n' or liste[i]=='b' or liste[i]=='r' :
+            sumNoir+=3
+            i+=1
+        elif liste [i]=='q':
+            sumNoir+=9
+            i+=1
+        elif liste [i]=='P':
+            sumBlanc+=1
+            i+=1
+        elif liste[i]=='N' or liste[i]=='B' or liste[i]=='R' :
+            sumBlanc+=3
+            i+=1
+        elif liste [i]=='Q':
+            sumBlanc+=9
+            i+=1
+        else:
+            i+=1
+    if boolean == True :
+        return sumBlanc-sumNoir
+    return sumNoir-sumBlanc
+
+#=================================================================================================================
     #Methode tourMax
     #return the best move for a given board,a depth and a variable
     # the depth is to know how deep should it go i.e how far should we go on the establismnent of the legal moves
@@ -64,33 +94,3 @@ def MinMax(board,profondeur,boolean):
     return tourMax(board, profondeur,boolean)
 
 
-#===========================================================================================================
-
-def utility(liste,boolean):
-    sumNoir=0
-    sumBlanc=0
-    i=0
-    while liste[i]!=' ':
-        if liste [i]=='p':
-            sumNoir+=1
-            i+=1
-        elif liste[i]=='n' or liste[i]=='b' or liste[i]=='r' :
-            sumNoir+=3
-            i+=1
-        elif liste [i]=='q':
-            sumNoir+=9
-            i+=1
-        elif liste [i]=='P':
-            sumBlanc+=1
-            i+=1
-        elif liste[i]=='N' or liste[i]=='B' or liste[i]=='R' :
-            sumBlanc+=3
-            i+=1
-        elif liste [i]=='Q':
-            sumBlanc+=9
-            i+=1
-        else:
-            i+=1
-    if boolean == True :
-        return sumBlanc-sumNoir
-    return sumNoir-sumBlanc
