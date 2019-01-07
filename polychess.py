@@ -46,6 +46,24 @@ def mouvementDemande (board):
         else:
             print("The move isn't possible or isn't legal")
 
+def teststr(liste_nom):
+    test=True
+    while(test):
+        string=input("name for save with only Number and letters")
+        if (not(len(string)>16 or len(string)<2)):
+            for k in range (len(string)):
+                if (ord(string[k])<48 or 57<ord(string[k])<65 or 90<ord(string[k])<96 or ord(string[k])>122):
+                    test=True
+                    break
+                else:
+                    test=False
+        if (test == False):
+            for k in liste_nom:
+                if k == string:
+                    test=True
+                    break
+    return (string)
+    
 ## Main function for the program.
 # The backbone of the program, with the gestion of the game.
 # Features loading/saving gestion, play modes and the game.
