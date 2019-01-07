@@ -46,7 +46,12 @@ def mouvementDemande (board):
         else:
             print("The move isn't possible or isn't legal")
 
+##
+#
+#
+
 def teststr(liste_nom):
+    liste_nom += [f for f in listdir("./SAVES/COMPLETED/") if (isfile(join("./SAVES/COMPLETED/", f)) and f.endswith(".pgn"))]
     test=True
     while(test):
         string=input("name for save with only Number and letters")
@@ -58,12 +63,12 @@ def teststr(liste_nom):
                 else:
                     test=False
         if (test == False):
-            for k in liste_nom:
-                if k == string:
+            for n in liste_nom:
+                if n == string + ".pgn":
                     test=True
                     break
-    return (string)
-    
+    return (string + ".pgn", "./SAVES/" + string + ".pgn")
+
 ## Main function for the program.
 # The backbone of the program, with the gestion of the game.
 # Features loading/saving gestion, play modes and the game.
@@ -108,7 +113,8 @@ def main ():
                 print ("Return to main menu")
             else:
                 # ==========================================================================
-                print ("Load allFiles[", value, "]")
+                tempfile = allFiles[value]
+                savefile = (tempfile, "./SAVES/" + tempfile)
                 PLAYER = True;
                 # ==========================================================================
                 NOTRETOUR = False
@@ -121,8 +127,8 @@ def main ():
             jeu = input ("Do you want to play against AI (1) or see an AI play against another AI (2) ?\n")
             if (int(jeu) < 2):
                 PLAYER = True
+            savefile = teststr(allFiles)
     # ==========================================================================
-    savefile = "SAVES/aaa.pgn"
     # Game gestion (saving game, playing)
     while (finDuGame(board) and NQUIT):
         # Player versus AI
@@ -149,7 +155,7 @@ def main ():
             board.push(coup)
         # Saving the game + quit
         print(board, "\n")
-        print("Game saved in ", savefile)
+        print("Game saved in ", savefile[0], savefile[1])
         temp = input("Do you want to quit the game (y or n) ?\n")
         if (temp == "y"):
             print ("You have quitted the game. See you at another time !")
