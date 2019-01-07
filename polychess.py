@@ -53,6 +53,13 @@ def mouvementDemande (board):
 # Features loading/saving gestion, play modes and the game.
 
 def main ():
+    #set the board to its initial position
+    #corresponding to: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
+    board = chess.Board()
+    #initialiser
+    movement = [0, 0]
+    list_moves = []
+    # Main menu (loading saved games, creating new games)
     EXISTING = str(-1)
     NOTRETOUR = True
     while (NOTRETOUR):
@@ -66,10 +73,11 @@ def main ():
         else:
             EXISTING = str(0)
         if (EXISTING == str(1)):
+            EXISTING = str(-1)
             value = -1
-            print (len(allFiles), "- Retour")
+            print ("\n", len(allFiles), "- Retour")
             while (value < 0 or value > len(allFiles)):
-                value = str(input("What file do you want to load"))
+                value = str(input("What file do you want to load : "))
                 try:
                     value = int(value)
                 except:
@@ -79,6 +87,7 @@ def main ():
             else:
                 # ==========================================================================
                 print ("Load allFiles[", value, "]")
+                PLAYER = True;
                 # ==========================================================================
                 NOTRETOUR = False
         else:
@@ -90,13 +99,7 @@ def main ():
             jeu = input ("Do you want to play against AI (1) or see an AI play against another AI (2) ?\n")
             if (int(jeu) < 2):
                 PLAYER = True
-            
-    #set the board to its initial position
-    #corresponding to: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
-    board = chess.Board()
-    #initialiser
-    movement = [0, 0]
-    list_moves = []
+    # Game gestion (saving game, playing)
     while (finDuGame(board) and movement[0] != 'q'):
         # ============================================================
         print("SAVING GAME HERE")
