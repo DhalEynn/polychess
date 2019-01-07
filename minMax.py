@@ -46,9 +46,9 @@ def utility(liste,boolean):
 def tourMax(board,profondeur,boolean):
     #when the depth eaquals 0 it's a leaf so return its utility
     if (profondeur==0):
-        b=board.fen()
-        return [utility(b,boolean),0]
     # if not, we make sur to decrease the depth
+        fenBoard=board.fen()
+        return [utility(fenBoard,boolean),0]
     profondeur = profondeur-1
     u=-inf
     coup=None
@@ -70,8 +70,8 @@ def tourMax(board,profondeur,boolean):
 
 def tourMin(board,profondeur,boolean):
     if (profondeur==0):
-        b=board.fen()
-        return [utility(b,boolean),0]
+        fenBoard=board.fen()
+        return [utility(fenBoard,boolean),0]
     profondeur=profondeur-1
     coup=None
     u=inf

@@ -1,10 +1,5 @@
 + doc format html éditable sans téléchargement ;  Il aurait été peut-être préférable de s'appropier le README du Git plutôt que de laisser tel qu'il était fourni, en particulier refléter les améliorations des différentes versions du programme
 
-
-- Nous n'avons pas accès au Trello, même en étant connecté
-
-- Un fichier Seance1.txt (qui est vide) dans le Git mais aucun pour les Séances 2 et 3
-
 - Le code pour PGN se trouve dans la documentation et présente les deux cas : lecture et écriture, il aurait été préférable de gagner en qualité en ne mettant qu'une seule fois les imports et de créer des fonctions pour cela
 
 - "The code is" un mélange de français et d'anglais, en particulier polyglot.py
@@ -12,5 +7,3 @@
 - Embryon de code pour gérer les parties contre l'ordinateur
 
 - Finalement, le code se trouve dans les branches, du coup cela masque le travail et il est donc important d'envisager rapidement l'intégration du tout
-
-- board.root() n'effectue pas une copie de la position courante, de ce que j'en comprends
