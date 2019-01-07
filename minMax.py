@@ -12,9 +12,9 @@ import chess
     #return the best move for a given board,a depth and a variable
     # the depth is to know how deep should it go i.e how far should we go on the establismnent of the legal moves
     # and the variable is to know which player it have maximize the utility so True for the Whites and False for the Blacks
-    
+
 def tourMax(board,profondeur,boolean):
-    #when the depth eaquals 0 it's a leaf so return its utility
+    #when the depth equals 0 it's a leaf so return its utility
     if (profondeur==0):
     # if not, we make sur to decrease the depth
         fenBoard=board.fen()
@@ -24,7 +24,7 @@ def tourMax(board,profondeur,boolean):
     coup=None
     #listeCoupsPossible is the list of all legal moves considering the board
     listeCoupsPossible=board.legal_moves
-    # 
+    #
     for l in listeCoupsPossible:
         copyOfBoard=board.copy()
         copyOfBoard.push(l)
@@ -57,11 +57,11 @@ def tourMin(board,profondeur,boolean):
 
 #==========================================================================================================
 
-    # method MinMax()
-    # determine the best move with the utility related by calling 
+    ## method MinMax()
+    # determine the best move with the utility related by calling
     # the method tourMax()
-def MinMax(board,profondeur,boolean):
-    return tourMax(board, profondeur,boolean)
+def MinMax(board, profondeur, boolean):
+    return tourMax(board, profondeur, boolean)[1]
 
 
 #===========================================================================================================

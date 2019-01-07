@@ -59,6 +59,8 @@ def main ():
     #initialiser
     movement = [0, 0]
     list_moves = []
+    smart = 3
+    colorAI = 0
     # Main menu (loading saved games, creating new games)
     EXISTING = str(-1)
     NOTRETOUR = True
@@ -113,7 +115,11 @@ def main ():
             movement = mouvementDemande(board)
             if (movement[0] != "q"):
                 board.push(movement[1])
-                print("Play AI here")
+                print("AI turn :")
+                print("")
+                print(board)
+                coup = MinMax(board, smart, colorAI)
+                board.push(coup)
 
         # AI versus AI
 
