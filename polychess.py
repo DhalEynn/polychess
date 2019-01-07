@@ -63,7 +63,7 @@ def main ():
     EXISTING = str(-1)
     NOTRETOUR = True
     while (NOTRETOUR):
-        allFiles = [f for f in listdir("./SAVES/") if (isfile(join("./SAVES/", f)) and f != ".DS_Store")]
+        allFiles = [f for f in listdir("./SAVES/") if (isfile(join("./SAVES/", f)) and f.endswith(".pgn"))]
         if (len(allFiles) != 0):
             print ("Here are all saved games : ")
             for i in range (len(allFiles)):
