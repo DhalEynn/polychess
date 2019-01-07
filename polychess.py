@@ -63,6 +63,7 @@ def main ():
     EXISTING = str(-1)
     NOTRETOUR = True
     while (NOTRETOUR):
+        # Make a list of all the .pgn files in the SAVES folder
         allFiles = [f for f in listdir("./SAVES/") if (isfile(join("./SAVES/", f)) and f.endswith(".pgn"))]
         if (len(allFiles) != 0):
             print ("Here are all saved games : ")
@@ -72,6 +73,7 @@ def main ():
                 EXISTING = str(input("Do you want to open an already saved game (1 - yes, 0 - no) ?"))
         else:
             EXISTING = str(0)
+        # Test for opening an already saved game
         if (EXISTING == str(1)):
             EXISTING = str(-1)
             value = -1
