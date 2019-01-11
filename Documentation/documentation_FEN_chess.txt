@@ -3,10 +3,10 @@ a exemple of FEN "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
 lowercase: Black
 uppercase: White
 (pawn = "P", knight = "N", bishop = "B", rook = "R", queen = "Q" and king = "K")
-/: start of next line 
-number: number of void case in line 
+/: start of next line
+number: number of void case in line
 W or B: color of player
-KQkq: possibility of 
+KQkq: possibility of castling move
 
 
 git clone -b Part3-FullCreation https://github.com/illerayn/polychess

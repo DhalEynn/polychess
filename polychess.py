@@ -76,9 +76,9 @@ def creagame (savefile, PLAYER):
     file.write("[Result \"*\"]\n\n")
     file.write("1.")
     file.close()
-    
+
 ## Save the new moves
-    
+
 def saving(fichier, listm):
     fileLec = open(fichier[1], "r")
     lec = []
@@ -96,7 +96,7 @@ def saving(fichier, listm):
     file.write(temp)
     file.close()
 
-# Save a finished game
+## Save a finished game
 
 def saving2(fichier, listm, result):
     fileLec = open(fichier[1], "r")
@@ -194,7 +194,7 @@ def main ():
                 if (savefile[0][0] == "A" and savefile[0][1] == "I" and savefile[0][2] == "-"):
                     PLAYER = False;
                 else:
-                    PLAYER = True;                
+                    PLAYER = True;
                 # ==========================================================================
                 NOTRETOUR = False
         else:
@@ -211,7 +211,7 @@ def main ():
                 savefile = teststr(allFiles, PLAYER)
                 savefile = ("AI-" + savefile[0], "./SAVES/AI-" + savefile[0])
             creagame(savefile, PLAYER)
-        
+
     temp = open(savefile[1], "r")
     for x in temp:
         if (x[0] == "1" and x[1] == "."):
@@ -228,7 +228,7 @@ def main ():
             if (i == 3):
                 i = 0
     temp.close()
-        
+
     # ==========================================================================
     # Game gestion (saving game, playing)
     while (finDuGame(board, list_moves, savefile) and NQUIT):
@@ -267,7 +267,7 @@ def main ():
                 coup = MinMax(board, smart, 0)
                 list_moves.append(str(coup))
                 board.push(coup)
-            
+
         # Saving the game + quit
         print(board, "\n")
         a = ""
