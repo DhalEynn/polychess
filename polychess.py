@@ -8,6 +8,7 @@ import chess
 from minMax import MinMax
 import random
 import datetime
+from sys import exit
 from os import listdir, rename
 from os.path import isfile, join
 
@@ -17,19 +18,21 @@ from os.path import isfile, join
 def finDuGame (board, listm, file):
     #do we have a winner?
     if (board.is_game_over() or board.is_stalemate() or board.is_insufficient_material() or board.is_fivefold_repetition() or board.is_seventyfive_moves()):
-        print("")
-        print(board)
         saving2(file, listm, board.result())
         if (board.is_fivefold_repetition() or board.is_seventyfive_moves()):
             print("")
             print(board)
             print("The game is over because 5 repetitions or 75 moves without capture")
             print(board.result())
-            return False
+            print("Game saved in", file[0])
+            exit()
         else:
             print("\nThe game is over")
+            print("")
+            print(board)
             print(board.result())
-            return False
+            print("Game saved in", file[0])
+            exit()
     else:
         return True
 
@@ -230,7 +233,6 @@ def main ():
             if (i == 3):
                 i = 0
     temp.close()
-
     # ==========================================================================
     # Game gestion (saving game, playing)
     while (finDuGame(board, list_moves, savefile) and NQUIT):
@@ -242,7 +244,7 @@ def main ():
             list_moves.append(movement[0])
             board.push(movement[1])
             if (finDuGame(board, list_moves, savefile)):
-                print("AI turn :")
+                print("\nAI turn :")
                 print("")
                 print(board)
                 coup = MinMax(board, smart, colorAI)
@@ -251,9 +253,9 @@ def main ():
 
         # AI versus AI
         else:
+            print("\nWhite AI turn :")
             print("")
             print(board)
-            print("\nWhite AI turn :")
             psmov = board.legal_moves
             numero = random.randint(0, psmov.count()-1)
             i=0
@@ -263,15 +265,15 @@ def main ():
                     board.push(move)
                     break
                 i+=1
-            print(board)
             if (finDuGame(board, list_moves, savefile)):
-                print("Black AI turn :")
+                print("\nBlack AI turn :")
+                print("")
+                print(board)
                 coup = MinMax(board, smart, 0)
                 list_moves.append(str(coup))
                 board.push(coup)
 
         # Saving the game + quit
-        print(board, "\n")
         a = ""
         for i in range (len(turn)):
             if (turn[i] != "."):
