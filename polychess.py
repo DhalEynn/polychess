@@ -54,8 +54,10 @@ def mouvementDemande (board):
 def creagame (savefile, PLAYER):
     path = savefile[1]
     file = open(path, "w")
-    file.write("[Event \"Polychess > all\"]\n")
-    file.write("[Site \"Polytech Annecy\"]\n")
+    event = input("What is the event :\n")
+    file.write("[Event \""+ event +"\"]\n")
+    where = input("Where does the event takes place :\n")
+    file.write("[Site \""+ where +"\"]\n")
     today = datetime.date.today()
     sy = str(today)
     a = ""
@@ -72,7 +74,7 @@ def creagame (savefile, PLAYER):
         file.write("[White \""+ white +"\"]\n")
     else:
         file.write("[White \"PolyBotChess\"]\n")
-    file.write("[Black \"PolychessBot\"]\n")
+    file.write("[Black \"Alpha0Bot\"]\n")
     file.write("[Result \"*\"]\n\n")
     file.write("1.")
     file.close()
