@@ -115,7 +115,7 @@ def saving2(fichier, listm, result):
         temp = temp + " " + a
     temp = temp[1:]
     file.write(temp)
-    os.rename(fichier[1], "./SAVES/COMPLETED/" + fichier[0])
+    rename(fichier[1], "./SAVES/COMPLETED/" + fichier[0])
     file.close()
 
 ## Input a name for the gamefile
@@ -233,8 +233,8 @@ def main ():
     # ==========================================================================
     # Game gestion (saving game, playing)
     while (finDuGame(board, list_moves, savefile) and NQUIT):
-        turn = list_moves[len(list_moves) - 1][0]
-        print ("Turn", turn)
+        turn = list_moves[len(list_moves) - 1]
+        print ("\nTurn", turn)
         # Player versus AI
         if (PLAYER == True):
             movement = mouvementDemande(board)
@@ -271,7 +271,12 @@ def main ():
             
         # Saving the game + quit
         print(board, "\n")
-        list_moves.append(str(int(turn) + 1) + ".")
+        a = ""
+        for i in range (len(turn)):
+            if (turn[i] != "."):
+                a = a + turn[i]
+        a = str(int(a) + 1) + "."
+        list_moves.append(a)
         saving(savefile, list_moves)
         print("Game saved in", savefile[0])
         temp = input("Do you want to quit the game (y or n) ?\n")
