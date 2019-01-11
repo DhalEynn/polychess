@@ -27,8 +27,7 @@ def finDuGame (board, listm, file):
             print(board.result())
             return False
         else:
-            print("GO : ", board.is_game_over(), "\nSTA :", board.is_stalemate(), "\nINS :", board.is_insufficient_material())
-            print("The game is over")
+            print("\nThe game is over")
             print(board.result())
             return False
     else:
@@ -115,8 +114,8 @@ def saving2(fichier, listm, result):
         temp = temp + " " + a
     temp = temp[1:]
     file.write(temp)
-    rename(fichier[1], "./SAVES/COMPLETED/" + fichier[0])
     file.close()
+    rename(fichier[1], "./SAVES/COMPLETED/" + fichier[0])
 
 ## Input a name for the gamefile
 # Make sure that the name isn't already used
