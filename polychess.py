@@ -50,9 +50,7 @@ def mouvementDemande (board):
         else:
             print("The move isn't possible or isn't legal")
 
-##
-#
-#
+## Create the savefile for the game
 
 def creagame (savefile, PLAYER):
     path = savefile[1]
@@ -80,9 +78,7 @@ def creagame (savefile, PLAYER):
     file.write("1.")
     file.close()
     
-##
-#
-#
+## Save the new moves
     
 def saving(fichier, listm):
     fileLec = open(fichier[1], "r")
@@ -101,9 +97,8 @@ def saving(fichier, listm):
     file.write(temp)
     file.close()
 
-##
-#
-#
+## Input a name for the gamefile
+# Make sure that the name isn't already used
 
 def teststr(liste_nom, PLAYER):
     liste_nom += [f for f in listdir("./SAVES/COMPLETED/") if (isfile(join("./SAVES/COMPLETED/", f)) and f.endswith(".pgn"))]
