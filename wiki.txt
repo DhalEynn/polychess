@@ -1,0 +1,31 @@
+
+Rémy: code fonction qui teste si la partie est terminé 
+temps prévu:15 minutes 
+temps mis: 20 min
+
+Rémy:code fonction récupéré le mouvement demandé par le joueur
+temps prévu:30 min
+temps mis:20
+
+Nadia:faire le lien avec la partie graphique
+temps prévu: 1h
+temps mis: 50 min
+
+Beda: stocker partie au format PGN 
+temps prévu: 2h
+temps mis: 4h
+
+Rémy: main function pour le jeu d’échec
+temps prévu: 20 min
+temps mis: 30 min
+
+Rémy: test + aide
+pour une durée indéfini
+
+Nadia: partie min-max
+temps prévu: 4h 
+temps mis:
+
+Nadia: Min-Max
+temps prévu:N/A
+temps mis: 6h
