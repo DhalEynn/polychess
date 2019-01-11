@@ -7,19 +7,19 @@
 import chess
 from minMax import MinMax
 import random
-import time
 import datetime
-from os import listdir
+from os import listdir, rename
 from os.path import isfile, join
 
 ## Is the game ready to end ?
 # Search if an ending condition has been triggered.
 
-def finDuGame (board):
+def finDuGame (board, listm, file):
     #do we have a winner?
     if (board.is_game_over() or board.is_stalemate() or board.is_insufficient_material() or board.is_fivefold_repetition() or board.is_seventyfive_moves()):
         print("")
         print(board)
+        saving2(file, listm, board.result())
         if (board.is_fivefold_repetition() or board.is_seventyfive_moves()):
             print("")
             print(board)
@@ -95,6 +95,27 @@ def saving(fichier, listm):
         temp = temp + " " + a
     temp = temp[1:]
     file.write(temp)
+    file.close()
+
+# Save a finished game
+
+def saving2(fichier, listm, result):
+    fileLec = open(fichier[1], "r")
+    lec = []
+    for x in fileLec:
+        lec.append(x)
+    fileLec.close()
+    file = open(fichier[1], "w")
+    for i in range (0, 6):
+        file.write(lec[i])
+    file.write("[Result \""+ result +"\"]\n")
+    file.write("\n")
+    temp = ""
+    for a in listm:
+        temp = temp + " " + a
+    temp = temp[1:]
+    file.write(temp)
+    os.rename(fichier[1], "./SAVES/COMPLETED/" + fichier[0])
     file.close()
 
 ## Input a name for the gamefile
@@ -202,7 +223,6 @@ def main ():
     i = 0
     if (len(list_moves) > 1):
         for val in list_moves:
-            print("i :", i, "val :", val)
             if (i != 0 and val != ""):
                 board.push(chess.Move.from_uci(val))
             i += 1
@@ -212,7 +232,7 @@ def main ():
         
     # ==========================================================================
     # Game gestion (saving game, playing)
-    while (finDuGame(board) and NQUIT):
+    while (finDuGame(board, list_moves, savefile) and NQUIT):
         turn = list_moves[len(list_moves) - 1][0]
         print ("Turn", turn)
         # Player versus AI
@@ -220,12 +240,13 @@ def main ():
             movement = mouvementDemande(board)
             list_moves.append(movement[0])
             board.push(movement[1])
-            print("AI turn :")
-            print("")
-            print(board)
-            coup = MinMax(board, smart, colorAI)
-            list_moves.append(str(coup))
-            board.push(coup)
+            if (finDuGame(board, list_moves, savefile)):
+                print("AI turn :")
+                print("")
+                print(board)
+                coup = MinMax(board, smart, colorAI)
+                list_moves.append(str(coup))
+                board.push(coup)
 
         # AI versus AI
         else:
@@ -242,10 +263,11 @@ def main ():
                     break
                 i+=1
             print(board)
-            print("Black AI turn :")
-            coup = MinMax(board, smart, 0)
-            list_moves.append(str(coup))
-            board.push(coup)
+            if (finDuGame(board, list_moves, savefile)):
+                print("Black AI turn :")
+                coup = MinMax(board, smart, 0)
+                list_moves.append(str(coup))
+                board.push(coup)
             
         # Saving the game + quit
         print(board, "\n")
